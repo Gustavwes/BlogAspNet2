@@ -1,7 +1,11 @@
 ﻿@model List<BlogAspNet2.Models.PostModel>
 <h2>Gustav's Blog</h2>
 <a asp-action="NewPost">Create new Post</a> 
-
+@*<form asp-action="Index" asp-controller="Home">
+    <label asp-for="Title"></label>
+    <input asp-for="Title" placeholder="Your name goes here" />
+    <input type="submit" />
+</form>*@
 @for (int i = Model.Count -1; i >= 0; i--)
 {
     <h1>@Model[i].Title</h1>
