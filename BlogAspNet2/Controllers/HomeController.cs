@@ -35,14 +35,20 @@ namespace BlogAspNet2.Controllers
                 {
                     postModel.FkCategoryId = item.FkCategoryId;
                 }
-                else
-                {
-                    postModel.FkCategoryId = postList.Max(x => x.FkCategoryId) + 1;
-                }
+               
+            }
+            if(postModel.FkCategoryId == null)
+            {
+                dataAccess.CreateNewCategory(postModel.FkCategory.Name);
+
+                postModel.FkCategoryId = dataAccess.GetNewCategoryId();
+
+
             }
             dataAccess.CreateNewPost(postModel.Title,postModel.Post,postModel.FkCategoryId);
             return View();
         }
+
     }
 
 

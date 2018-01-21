@@ -1,4 +1,4 @@
---create database BlogAspNet
+create database BlogAspNet
 
 use BlogAspNet
 
@@ -17,9 +17,12 @@ foreign key (FK_CategoryId) references Category(Id)
 );
 select * from Category
 insert into Category (Name)
-values ('Sports')
+values ('Gaming'), 
+('Sports')
 
 insert into Post(Title,Post,Datetime,FK_CategoryId)
 values ('Test Title','Test Post Content',CURRENT_TIMESTAMP,1)
 
 select * from Post
+
+delete from Post where Id = 5

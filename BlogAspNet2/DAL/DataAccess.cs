@@ -30,7 +30,7 @@ namespace BlogAspNet2.DAL
                 BindingList<PostModel> selectedPosts = new BindingList<PostModel>(postQuery.ToList());
                 foreach (var item in selectedPosts)
                 {
-                    item.FkCategory = GetCategories(item.FkCategoryId);
+                    item.FkCategory = GetCategory(item.FkCategoryId);
                 }
                 return selectedPosts;
             }
@@ -53,7 +53,18 @@ namespace BlogAspNet2.DAL
             }
         }
 
-        public CategoryModel GetCategories(int? catId)
+        public void CreateNewCategory(string catName)
+        {
+            using (var dataContext = new BlogAspNetContext())
+            {
+                var newCategory = new Category();
+                newCategory.Name = catName;
+                dataContext.Add(newCategory);
+                dataContext.SaveChanges();
+            }
+        }
+
+        public CategoryModel GetCategory(int? catId)
         {
             var categoryModel = new CategoryModel();                                                                                      
             using (var dataContext = new BlogAspNetContext())
@@ -69,6 +80,16 @@ namespace BlogAspNet2.DAL
                 return categoryModel;
             }
             
+        }
+
+        public int GetNewCategoryId()
+        {
+            using (var dataContext = new BlogAspNetContext())
+            {
+                int maxCatId = dataContext.Category.Max(x => x.Id);
+
+                return maxCatId;
+            }
         }
     }
 }
