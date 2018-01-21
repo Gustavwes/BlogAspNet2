@@ -1,0 +1,24 @@
+﻿
+@model BlogAspNet2.Models.PostModel
+
+
+
+
+
+<form asp-controller="Home" asp-action="SubmitPost" method="post">
+
+    <label asp-for="Title"></label>
+    <input asp-for="Title" />
+
+    <br /> <br />
+
+    <label asp-for="Post"></label>
+    <input asp-for="Post" />
+
+    <br /><br />
+    <label asp-for="FkCategory.Name"></label>
+    <input asp-for="FkCategory.Name" />
+
+    <input type="submit" value="Submission" />
+</form>
+

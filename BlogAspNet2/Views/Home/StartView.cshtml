@@ -1,3 +1,11 @@
-﻿@model 
+﻿@model List<BlogAspNet2.Models.PostModel>
 <h2>StartView</h2>
+@foreach (var item in @Model)
+{
+    <h1>@item.Title</h1> 
+    <p>Written at: @item.Datetime Category: @item.FkCategory.Name</p>
+    <br/>
+    <p>@item.Post</p>
+}
 
+<a asp-action="NewPost">Create new Post</a>
