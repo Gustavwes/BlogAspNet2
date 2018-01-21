@@ -1,11 +1,13 @@
 ﻿@model List<BlogAspNet2.Models.PostModel>
-<h2>StartView</h2>
-@foreach (var item in @Model)
+<h2>Gustav's Blog</h2>
+<a asp-action="NewPost">Create new Post</a> 
+
+@for (int i = Model.Count -1; i >= 0; i--)
 {
-    <h1>@item.Title</h1> 
-    <p>Written at: @item.Datetime Category: @item.FkCategory.Name</p>
+    <h1>@Model[i].Title</h1>
+    <p>Written at: @Model[i].Datetime Category: @Model[i].FkCategory.Name</p>
     <br/>
-    <p>@item.Post</p>
+    <p>@Model[i].Post</p>
 }
 
-<a asp-action="NewPost">Create new Post</a>
+
