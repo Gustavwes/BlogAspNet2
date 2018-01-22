@@ -53,6 +53,35 @@ namespace BlogAspNet2.DAL
             }
         }
 
+        public BindingList<PostModel> SearchPosts(string searchValue)
+        {
+            var resultList = new BindingList<PostModel>();
+
+            using (var dataContext = new BlogAspNetContext())
+            {
+                var postQuery = from post in dataContext.Post
+                                where post.Post1.Contains(searchValue)
+                                    || post.Title.Contains(searchValue)
+                                      select new PostModel()
+                                      {
+
+                        Post = post.Post1,
+                        Title = post.Title,
+                        Datetime = post.Datetime,
+                        FkCategoryId = post.FkCategoryId
+
+                    };
+
+
+                BindingList<PostModel> selectedPosts = new BindingList<PostModel>(postQuery.ToList());
+                foreach (var item in selectedPosts)
+                {
+                    item.FkCategory = GetCategory(item.FkCategoryId);
+                }
+                return selectedPosts;
+            }
+        }
+
         public void CreateNewCategory(string catName)
         {
             using (var dataContext = new BlogAspNetContext())

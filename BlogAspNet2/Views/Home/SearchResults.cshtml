@@ -1,13 +1,10 @@
 ﻿@model List<BlogAspNet2.Models.PostModel>
-<h2>Gustav's Blog</h2>
-<a asp-action="NewPost">Create new Post</a> 
-<a asp-action="SearchResults">Search results</a>
-@for (int i = Model.Count -1; i >= 0; i--)
+<h2>Search Ressults</h2>
+
+@for (int i = Model.Count - 1; i >= 0; i--)
 {
     <h1>@Model[i].Title</h1>
     <p>Written at: @Model[i].Datetime Category: @Model[i].FkCategory.Name</p>
-    <br/>
+    <br />
     <p>@Model[i].Post</p>
 }
-
-

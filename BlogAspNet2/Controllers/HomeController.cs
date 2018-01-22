@@ -49,6 +49,14 @@ namespace BlogAspNet2.Controllers
             return View();
         }
 
+        public IActionResult SearchResults()
+        {
+            DataAccess dataAccess = new DataAccess();
+            List<PostModel> allPosts = dataAccess.SearchPosts("post").ToList();
+
+
+            return View(allPosts);
+        }
     }
 
 
