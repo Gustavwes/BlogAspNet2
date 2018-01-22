@@ -1,6 +1,9 @@
 ﻿
 @model BlogAspNet2.Models.PostModel
 
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
 
 
 
@@ -9,11 +12,13 @@
 
     <label asp-for="Title"></label>
     <input asp-for="Title" />
+    <span asp-validation-for="Title"></span>
 
     <br /> <br />
 
     <label asp-for="Post"></label>
     <input asp-for="Post" />
+    <span asp-validation-for="Post"></span>
 
     <br /><br />
     <label asp-for="FkCategory.Name">Category</label>

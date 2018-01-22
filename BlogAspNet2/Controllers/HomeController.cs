@@ -20,46 +20,75 @@ namespace BlogAspNet2.Controllers
             return View(allPosts);
         }
 
+        
         public IActionResult NewPost()
         {
             return View();
         }
 
+        
         public IActionResult SubmitPost(PostModel postModel)
         {
-            DataAccess dataAccess = new DataAccess();
-            var postList = dataAccess.GetAllPosts();
-            foreach (var item in postList)
+            if (ModelState.IsValid)
             {
-                if (item.FkCategory.Name == postModel.FkCategory.Name)
+                DataAccess dataAccess = new DataAccess();
+                var postList = dataAccess.GetAllPosts();
+                foreach (var item in postList)
                 {
-                    postModel.FkCategoryId = item.FkCategoryId;
+                    if (item.FkCategory.Name == postModel.FkCategory.Name)
+                    {
+                        postModel.FkCategoryId = item.FkCategoryId;
+                    }
+
                 }
-               
+                if (postModel.FkCategoryId == null)
+                {
+                    dataAccess.CreateNewCategory(postModel.FkCategory.Name);
+
+                    postModel.FkCategoryId = dataAccess.GetNewCategoryId();
+
+
+                }
+                dataAccess.CreateNewPost(postModel.Title, postModel.Post, postModel.FkCategoryId);
+                return View();
             }
-            if(postModel.FkCategoryId == null)
-            {
-                dataAccess.CreateNewCategory(postModel.FkCategory.Name);
 
-                postModel.FkCategoryId = dataAccess.GetNewCategoryId();
+            return View(StartView());
+            //DataAccess dataAccess = new DataAccess();
+            //var postList = dataAccess.GetAllPosts();
+            //foreach (var item in postList)
+            //{
+            //    if (item.FkCategory.Name == postModel.FkCategory.Name)
+            //    {
+            //        postModel.FkCategoryId = item.FkCategoryId;
+            //    }
+
+            //}
+            //if(postModel.FkCategoryId == null)
+            //{
+            //    dataAccess.CreateNewCategory(postModel.FkCategory.Name);
+
+            //    postModel.FkCategoryId = dataAccess.GetNewCategoryId();
 
 
-            }
-            dataAccess.CreateNewPost(postModel.Title,postModel.Post,postModel.FkCategoryId);
-            return View();
+            //}
+            //dataAccess.CreateNewPost(postModel.Title,postModel.Post,postModel.FkCategoryId);
+            //return View();
         }
 
         public IActionResult SelectSinglePost(int postId)
         {
             var dataAccess = new DataAccess();
-            var selectedPost = dataAccess.GetSinglePost(postId);
+            //var selectedPost = dataAccess.GetSinglePost(postId);
+            var selectedPost = dataAccess.GetAllPosts().SingleOrDefault(x => x.Id == postId);
             return View(selectedPost);
         }
         [HttpPost]
         public IActionResult SearchResults(string searchValue)
         {
             DataAccess dataAccess = new DataAccess();
-            List<PostModel> allPosts = dataAccess.SearchPosts(searchValue).ToList();
+            //List<PostModel> allPosts = dataAccess.SearchPosts(searchValue).ToList();
+            List<PostModel> allPosts = dataAccess.GetAllPosts().Where(x => x.Title.ToLower().Contains(searchValue.ToLower())).ToList();
 
 
             return View(allPosts);

@@ -1,19 +1,58 @@
 ﻿@model List<BlogAspNet2.Models.PostModel>
-<h2>Gustav's Blog</h2>
-<a asp-action="NewPost">Create new Post</a> 
-<a asp-action="SearchResults">Search results</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-@using(Html.BeginForm())
-{
-    <input type="text" name="searchValue" />
-    <input type="submit" asp-action="SearchResults"/>
-}
-@for (int i = Model.Count -1; i >= 0; i--)
-{
-    <a asp-controller="Home" asp-action="SelectSinglePost" asp-route-postId="@Model[i].Id"><h1>@Model[i].Title</h1></a>
-    <p>Written at: @Model[i].Datetime Category: @Model[i].FkCategory.Name</p>
-    <br/>
-    <p>@Model[i].Post</p>
-}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row, p-3 mb-2 bg-warning text-dark">
+        <div class="col-sm-4">
+            <h2>Gustav's Blog</h2>
+        </div>
+        <div class="col-sm-4">
+            <a asp-action="NewPost" class="text-primary">Create new Post</a>
+        </div>
+        <div class="col-sm-4">
+            
+            @using (Html.BeginForm())
+            {
+                <input type="text" name="searchValue"/>
+                <input type="submit" class="btn btn-info" asp-action="SearchResults" value="Search"/>
+            }
+        </div>
+    </div>
+   
+
+
+
+
+
+
+
+  
+    @for (int i = Model.Count - 1; i >= 0; i--)
+    {
+        <a asp-controller="Home" asp-action="SelectSinglePost" asp-route-postId="@Model[i].Id">
+            <h3>@Model[i].Title</h3>
+        </a>
+        <p>Written at: @Model[i].Datetime Category: @Model[i].FkCategory.Name</p>
+
+
+    }
+
+</div>
+@*Bootstrap Stuff*@
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</body>
+
+</html>
+
 
 
