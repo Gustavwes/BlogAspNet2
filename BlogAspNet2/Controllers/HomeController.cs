@@ -48,11 +48,11 @@ namespace BlogAspNet2.Controllers
             dataAccess.CreateNewPost(postModel.Title,postModel.Post,postModel.FkCategoryId);
             return View();
         }
-
-        public IActionResult SearchResults()
+        [HttpPost]
+        public IActionResult SearchResults(string searchValue)
         {
             DataAccess dataAccess = new DataAccess();
-            List<PostModel> allPosts = dataAccess.SearchPosts("post").ToList();
+            List<PostModel> allPosts = dataAccess.SearchPosts(searchValue).ToList();
 
 
             return View(allPosts);

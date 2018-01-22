@@ -9,6 +9,25 @@ namespace BlogAspNet2.DAL
 {
     public class DataAccess
     {
+        public PostModel GetSinglePost(int postId)
+        {
+            using (var dataContext = new BlogAspNetContext())
+            {
+                var postquery = from post in dataContext.Post
+                                where post.Id == postId
+                    select new PostModel()
+                    {
+                        Post = post.Post1,
+                        Title = post.Title,
+                        Datetime = post.Datetime,
+                        FkCategoryId = post.FkCategoryId
+                    };
+                PostModel selectedPost = postquery.SingleOrDefault(x => x.Id == postId);
+                return selectedPost;
+            }
+            
+
+        }
         public BindingList<PostModel> GetAllPosts()
         {
             

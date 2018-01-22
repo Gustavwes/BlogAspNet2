@@ -2,6 +2,12 @@
 <h2>Gustav's Blog</h2>
 <a asp-action="NewPost">Create new Post</a> 
 <a asp-action="SearchResults">Search results</a>
+
+@using(Html.BeginForm())
+{
+    <input type="text" name="searchValue" />
+    <input type="submit" asp-action="SearchResults"/>
+}
 @for (int i = Model.Count -1; i >= 0; i--)
 {
     <h1>@Model[i].Title</h1>
