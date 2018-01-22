@@ -20,7 +20,9 @@ namespace BlogAspNet2.DAL
                         Post = post.Post1,
                         Title = post.Title,
                         Datetime = post.Datetime,
-                        FkCategoryId = post.FkCategoryId
+                        FkCategoryId = post.FkCategoryId,
+                        Id = post.Id
+                        
                     };
                 PostModel selectedPost = postquery.SingleOrDefault(x => x.Id == postId);
                 return selectedPost;
@@ -41,7 +43,8 @@ namespace BlogAspNet2.DAL
                         Post = post.Post1,
                         Title = post.Title,
                         Datetime = post.Datetime,
-                        FkCategoryId = post.FkCategoryId
+                        FkCategoryId = post.FkCategoryId,
+                        Id = post.Id
                        
                     };
 
@@ -66,6 +69,7 @@ namespace BlogAspNet2.DAL
                 newPost.Title = title;
                 newPost.FkCategoryId = categoryId;
                 
+                
 
                 dataContext.Add(newPost);
                 dataContext.SaveChanges();
@@ -87,7 +91,8 @@ namespace BlogAspNet2.DAL
                         Post = post.Post1,
                         Title = post.Title,
                         Datetime = post.Datetime,
-                        FkCategoryId = post.FkCategoryId
+                        FkCategoryId = post.FkCategoryId,
+                        Id = post.Id
 
                     };
 

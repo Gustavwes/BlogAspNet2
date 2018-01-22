@@ -10,7 +10,7 @@
 }
 @for (int i = Model.Count -1; i >= 0; i--)
 {
-    <h1>@Model[i].Title</h1>
+    <a asp-controller="Home" asp-action="SelectSinglePost" asp-route-postId="@Model[i].Id"><h1>@Model[i].Title</h1></a>
     <p>Written at: @Model[i].Datetime Category: @Model[i].FkCategory.Name</p>
     <br/>
     <p>@Model[i].Post</p>
