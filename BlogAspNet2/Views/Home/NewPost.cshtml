@@ -9,21 +9,26 @@
 
 
 <form asp-controller="Home" asp-action="SubmitPost" method="post">
+   
 
-    <label asp-for="Title"></label>
-    <input asp-for="Title" >
-    <span asp-validation-for="Title"></span>
-
-    <br /> <br />
-
-    <label asp-for="Post"></label>
-    <textarea asp-for="Post"></textarea>
-    <span asp-validation-for="Post"></span>
+            <label asp-for="Title"></label>
+            <input asp-for="Title">
+            <span asp-validation-for="Title"></span>
+        
 
     <br /><br />
     <label asp-for="FkCategory.Name">Category</label>
     <input asp-for="FkCategory.Name" />
+    <br /> <br />
 
-    <input type="submit" value="Post" />
+    <label asp-for="Post"></label>
+    <textarea asp-for="Post" rows="8" cols="50"></textarea>
+    <span asp-validation-for="Post"></span>
+
+    <br/><br/>
+    <div class="col-sm-4">
+
+    <input type="submit" value="Post" class="btn btn-info align-self-lg-end float-sm-right" />
+    </div>
 </form>
 

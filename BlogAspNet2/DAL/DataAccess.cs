@@ -9,27 +9,7 @@ namespace BlogAspNet2.DAL
 {
     public class DataAccess
     {
-        //public PostModel GetSinglePost(int postId)
-        //{
-        //    using (var dataContext = new BlogAspNetContext())
-        //    {
-        //        var postquery = from post in dataContext.Post
-        //                        where post.Id == postId
-        //            select new PostModel()
-        //            {
-        //                Post = post.Post1,
-        //                Title = post.Title,
-        //                Datetime = post.Datetime,
-        //                FkCategoryId = post.FkCategoryId,
-        //                Id = post.Id
-                        
-        //            };
-        //        PostModel selectedPost = postquery.SingleOrDefault(x => x.Id == postId);
-        //        return selectedPost;
-        //    }
-            
-
-        //}
+     
         public BindingList<PostModel> GetAllPosts()
         {
             
@@ -76,35 +56,6 @@ namespace BlogAspNet2.DAL
             }
         }
 
-        //public BindingList<PostModel> SearchPosts(string searchValue)
-        //{
-        //    var resultList = new BindingList<PostModel>();
-
-        //    using (var dataContext = new BlogAspNetContext())
-        //    {
-        //        var postQuery = from post in dataContext.Post
-        //                        where post.Post1.Contains(searchValue)
-        //                            || post.Title.Contains(searchValue)
-        //                              select new PostModel()
-        //                              {
-
-        //                Post = post.Post1,
-        //                Title = post.Title,
-        //                Datetime = post.Datetime,
-        //                FkCategoryId = post.FkCategoryId,
-        //                Id = post.Id
-
-        //            };
-
-
-        //        BindingList<PostModel> selectedPosts = new BindingList<PostModel>(postQuery.ToList());
-        //        foreach (var item in selectedPosts)
-        //        {
-        //            item.FkCategory = GetCategory(item.FkCategoryId);
-        //        }
-        //        return selectedPosts;
-        //    }
-        //}
 
         public void CreateNewCategory(string catName)
         {

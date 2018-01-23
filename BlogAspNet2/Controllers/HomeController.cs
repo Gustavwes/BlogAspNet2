@@ -54,26 +54,7 @@ namespace BlogAspNet2.Controllers
             }
 
             return View(StartView());
-            //DataAccess dataAccess = new DataAccess();
-            //var postList = dataAccess.GetAllPosts();
-            //foreach (var item in postList)
-            //{
-            //    if (item.FkCategory.Name == postModel.FkCategory.Name)
-            //    {
-            //        postModel.FkCategoryId = item.FkCategoryId;
-            //    }
-
-            //}
-            //if(postModel.FkCategoryId == null)
-            //{
-            //    dataAccess.CreateNewCategory(postModel.FkCategory.Name);
-
-            //    postModel.FkCategoryId = dataAccess.GetNewCategoryId();
-
-
-            //}
-            //dataAccess.CreateNewPost(postModel.Title,postModel.Post,postModel.FkCategoryId);
-            //return View();
+          
         }
 
         public IActionResult SelectSinglePost(int postId)
@@ -83,6 +64,7 @@ namespace BlogAspNet2.Controllers
             var selectedPost = dataAccess.GetAllPosts().SingleOrDefault(x => x.Id == postId);
             return View(selectedPost);
         }
+
         [HttpPost]
         public IActionResult SearchResults(string searchValue)
         {

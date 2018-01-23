@@ -17,8 +17,9 @@ namespace BlogAspNet2.Models
         [Required(ErrorMessage = "Each post must have text content.")]
         [StringLength(2000,ErrorMessage = "The post can be max 2000 characters.")]
         public string Post { get; set; }
-
+        
         public DateTime? Datetime { get; set; }
+
         public int? FkCategoryId { get; set; }
 
         public CategoryModel FkCategory { get; set; }
