@@ -11,13 +11,13 @@
 <form asp-controller="Home" asp-action="SubmitPost" method="post">
 
     <label asp-for="Title"></label>
-    <input asp-for="Title" />
+    <input asp-for="Title" >
     <span asp-validation-for="Title"></span>
 
     <br /> <br />
 
     <label asp-for="Post"></label>
-    <input asp-for="Post" />
+    <textarea asp-for="Post"></textarea>
     <span asp-validation-for="Post"></span>
 
     <br /><br />
