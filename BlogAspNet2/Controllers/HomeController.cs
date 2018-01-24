@@ -60,7 +60,6 @@ namespace BlogAspNet2.Controllers
         public IActionResult SelectSinglePost(int postId)
         {
             var dataAccess = new DataAccess();
-            //var selectedPost = dataAccess.GetSinglePost(postId);
             var selectedPost = dataAccess.GetAllPosts().SingleOrDefault(x => x.Id == postId);
             return View(selectedPost);
         }
@@ -69,7 +68,7 @@ namespace BlogAspNet2.Controllers
         public IActionResult SearchResults(string searchValue)
         {
             DataAccess dataAccess = new DataAccess();
-            //List<PostModel> allPosts = dataAccess.SearchPosts(searchValue).ToList();
+          
             List<PostModel> allPosts = dataAccess.GetAllPosts().Where(x => x.Title.ToLower().Contains(searchValue.ToLower())).ToList();
 
 
