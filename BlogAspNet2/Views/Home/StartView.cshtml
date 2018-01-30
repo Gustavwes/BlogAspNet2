@@ -12,7 +12,7 @@
                 <a asp-controller="Home" asp-action="SelectSinglePost" asp-route-postId="@Model[i].Id">
                     <h3>@Model[i].Title</h3>
                 </a>
-                <p>Written at: @Model[i].Datetime Category: @Model[i].FkCategory.Name</p>
+                <p>Written at: @Model[i].Datetime.Value.ToString("yyyy-MM-dd") Category: @Model[i].FkCategory.Name</p>
             </div>
 
         }
@@ -22,7 +22,7 @@
                 <a asp-controller="Home" asp-action="SelectSinglePost" asp-route-postId="@Model[i].Id">
                     <h3>@Model[i].Title</h3>
                 </a>
-                <p>Written at: @Model[i].Datetime Category: @Model[i].FkCategory.Name</p>
+                <p>Written at: @Model[i].Datetime.Value.ToString("yyyy-MM-dd") Category: @Model[i].FkCategory.Name</p>
             </div>
         }
 
